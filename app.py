@@ -52,6 +52,9 @@ def webhook():
     threading.Thread(target=ejecutar_orden_con_retraso, args=(order_id, action, symbol, amount_usd)).start()
 
     return jsonify({"status": f"🕒 Orden programada con retardo de {DELAY_VALIDATION_SECONDS}s"}), 200
+@app.route('/', methods=['GET'])
+def home():
+    return '✅ Servidor Flask operativo para recibir alertas de TradingView'
 
 if __name__ == '__main__':
     app.run(port=5000)
